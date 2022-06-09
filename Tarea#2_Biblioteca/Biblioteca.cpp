@@ -1,10 +1,11 @@
 #include <iostream>
 #include <algorithm>
+#include <path>
 #include <time.h>
 
 using namespace std;
 
-string libros[39][4];
+string libros[39][5];
 
 void cargarLibros() {
     // Arreglo con categoria y descripcion
@@ -62,7 +63,7 @@ int main(int argc, char const *argv[])
     {
         string buscar = "";
         system("cls");
-        cout << "Ingrese la descripcion del libro que busca: ";
+        cout << "Ingrese la descripcion del libro o autor que busca: ";
         cin >> buscar;
 
         // busqueda
@@ -72,10 +73,10 @@ int main(int argc, char const *argv[])
             string autor1 = libros[i][2];
             string autor2 = libros[i][3];
             string autor3 = libros[i][4];
+            string libroEnminuscula = libro;
             string autor1Enminuscula = autor1;
             string autor2Enminuscula = autor2;
             string autor3Enminuscula = autor3;
-            string libroEnminuscula = libro;
             // transformamos a minuscula los string buscar y libro
             transform(libroEnminuscula.begin(), libroEnminuscula.end(), libroEnminuscula.begin(), ::tolower);
             transform(buscar.begin(), buscar.end(), buscar.begin(), ::tolower);
@@ -86,14 +87,8 @@ int main(int argc, char const *argv[])
             transform(autor3Enminuscula.begin(), autor3Enminuscula.end(), autor3Enminuscula.begin(), ::tolower);
             transform(buscar.begin(), buscar.end(), buscar.begin(), ::tolower);
 
-            if (libroEnminuscula.find(buscar) != string::npos) {
-                cout << "Libro encontrado: " << libro << endl;
-                if (autor1Enminuscula.find(buscar) != string::npos) {
-                    cout << "Autor encontrado: " << autor1 << endl;
-                    if (autor2Enminuscula.find(buscar) != string::npos) {
-                        cout << "Autor encontrado: " << autor2 << endl;
-                        if (autor3Enminuscula.find(buscar) != string::npos) {
-                            cout << "Autor encontrado: " << autor3 << endl;  
+            if (libroEnminuscula.find(buscar) != string::npos) || (autor1Enminuscula.find(buscar) != string::npos) || (autor2Enminuscula.find(buscar) != string::npos) || (autor3Enminuscula.find(buscar) != string::npos){ 
+                cout << "Libro o autor encontrado: " << libro << endl;
 
                 cout << "Tambien te sugerimos estos libros: " << endl;
 
@@ -107,9 +102,6 @@ int main(int argc, char const *argv[])
 
                 salir = true;
                 break;
-                        }
-                    }   
-                }
             }
         }
         
