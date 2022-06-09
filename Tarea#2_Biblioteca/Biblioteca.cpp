@@ -4,7 +4,7 @@
 
 using namespace std;
 
-string libros[39][2];
+string libros[39][4];
 
 void cargarLibros() {
     // Arreglo con categoria y descripcion
@@ -69,13 +69,31 @@ int main(int argc, char const *argv[])
         for (int i = 0; i < 39; i++)
         {
             string libro = libros[i][1];
+            string autor1 = libros[i][2];
+            string autor2 = libros[i][3];
+            string autor3 = libros[i][4];
+            string autor1Enminuscula = autor1;
+            string autor2Enminuscula = autor2;
+            string autor3Enminuscula = autor3;
             string libroEnminuscula = libro;
             // transformamos a minuscula los string buscar y libro
             transform(libroEnminuscula.begin(), libroEnminuscula.end(), libroEnminuscula.begin(), ::tolower);
             transform(buscar.begin(), buscar.end(), buscar.begin(), ::tolower);
+            transform(autor1Enminuscula.begin(), autor1Enminuscula.end(), autor1Enminuscula.begin(), ::tolower);
+            transform(buscar.begin(), buscar.end(), buscar.begin(), ::tolower);
+            transform(autor2Enminuscula.begin(), autor2Enminuscula.end(), autor2Enminuscula.begin(), ::tolower);
+            transform(buscar.begin(), buscar.end(), buscar.begin(), ::tolower);
+            transform(autor3Enminuscula.begin(), autor3Enminuscula.end(), autor3Enminuscula.begin(), ::tolower);
+            transform(buscar.begin(), buscar.end(), buscar.begin(), ::tolower);
 
             if (libroEnminuscula.find(buscar) != string::npos) {
                 cout << "Libro encontrado: " << libro << endl;
+                if (autor1Enminuscula.find(buscar) != string::npos) {
+                    cout << "Autor encontrado: " << autor1 << endl;
+                    if (autor2Enminuscula.find(buscar) != string::npos) {
+                        cout << "Autor encontrado: " << autor2 << endl;
+                        if (autor3Enminuscula.find(buscar) != string::npos) {
+                            cout << "Autor encontrado: " << autor3 << endl;  
 
                 cout << "Tambien te sugerimos estos libros: " << endl;
 
@@ -89,16 +107,18 @@ int main(int argc, char const *argv[])
 
                 salir = true;
                 break;
+                        }
+                    }   
+                }
             }
         }
         
-
         if (salir == false) {
             char continuar = 'n';
 
             while(true) {
                 system("cls");
-                cout << "No se encontro el libro que busca. Desea continuar? s/n ";
+                cout << "No se encontro el libro o autor que buscas. Desea continuar? s/n ";
                 cin >> continuar;
 
                 if (continuar == 's' || continuar == 'S') {
