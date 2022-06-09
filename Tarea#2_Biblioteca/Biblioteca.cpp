@@ -1,6 +1,5 @@
 #include <iostream>
 #include <algorithm>
-#include <path>
 #include <time.h>
 
 using namespace std;
@@ -87,7 +86,7 @@ int main(int argc, char const *argv[])
             transform(autor3Enminuscula.begin(), autor3Enminuscula.end(), autor3Enminuscula.begin(), ::tolower);
             transform(buscar.begin(), buscar.end(), buscar.begin(), ::tolower);
 
-            if (libroEnminuscula.find(buscar) != string::npos) || (autor1Enminuscula.find(buscar) != string::npos) || (autor2Enminuscula.find(buscar) != string::npos) || (autor3Enminuscula.find(buscar) != string::npos){ 
+            if (libroEnminuscula.find(buscar) != string::npos || (autor1Enminuscula.find(buscar) != string::npos || (autor2Enminuscula.find(buscar) != string::npos || (autor3Enminuscula.find(buscar) != string::npos)))){ 
                 cout << "Libro o autor encontrado: " << libro << endl;
 
                 cout << "Tambien te sugerimos estos libros: " << endl;
