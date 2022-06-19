@@ -3,6 +3,7 @@
 #include<conio.h>
 #include<stdlib.h>
 #include<time.h>
+#include<tchar.h>
 
 using namespace std;
 
